@@ -1,0 +1,96 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { SITE } from '../../lib/site';
+import "../../styles/blog.css";
+import RelatedPosts from "../../components/RelatedPosts.astro";
+
+import HeaderSection1 from '../../components/sec/HeaderSection1.astro';
+import HeaderSection2 from '../../components/sec/HeaderSection2.astro';
+import HeaderSection3 from '../../components/sec/HeaderSection3.astro';
+
+import FooterSection1 from '../../components/sec/FooterSection1.astro';
+import FooterSection2 from '../../components/sec/FooterSection2.astro';
+
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+
+  return posts.map((post) => ({
+    params: {
+      slug: post.slug
+    },
+    props: {
+      post
+    }
+  }));
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+
+
+const posts = await getCollection("blog");
+---
+
+<MainLayout
+  title={`${post.data.title} | ${SITE.title}`}
+  description={post.data.description}
+  canonical={SITE.url(`/blog/${post.slug}`)}
+  amp={SITE.url(`/blog/${post.slug}/amp`)}
+  slug={post.slug}
+>
+
+  <HeaderSection1 />
+  <HeaderSection2 />
+
+  <main>
+
+    <article>
+
+      <h1>{post.data.title}</h1>
+<img
+  src={SITE.url(`/api/og/${post.slug}.svg`)}
+  alt={post.data.title}
+  loading="eager"
+  decoding="async"
+  fetchpriority="high"
+  width="1200"
+  height="630"
+/>
+
+{headings.length > 0 && (
+  <details class="toc">
+
+    <summary class="toc-title">
+      <span>📑 Daftar Isi</span>
+      <span class="toc-toggle"></span>
+    </summary>
+
+    <ul>
+
+      {headings.map((heading) => (
+        <li class={`depth-${heading.depth}`}>
+          <a href={`#${heading.slug}`}>
+            {heading.text}
+          </a>
+        </li>
+      ))}
+
+    </ul>
+
+  </details>
+)}
+
+      <Content />
+
+<RelatedPosts
+  posts={posts}
+  currentSlug={post.slug}
+/>
+
+    </article>
+
+  </main>
+
+</MainLayout>
