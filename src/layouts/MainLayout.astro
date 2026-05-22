@@ -43,21 +43,9 @@ const faqSchema = generateFaqSchema(html);
     <slot />
   </main>
 
-  <Footer />
+  <Footer /><!-- SCRIPT --> <script type="module">window.toggleMenu=function(){document.getElementById("navMenu").classList.toggle("active")};window.toggleMode=function(){const e=document.documentElement;e.classList.toggle("light-mode");const t=document.getElementById("modeIcon");e.classList.contains("light-mode")?(localStorage.setItem("theme","light"),t&&(t.textContent="☀️")):(localStorage.setItem("theme","dark"),t&&(t.textContent="🌙"))};window.addEventListener("DOMContentLoaded",()=>{const e=localStorage.getItem("theme"),t=document.getElementById("modeIcon");e==="light"&&(document.documentElement.classList.add("light-mode"),t&&(t.textContent="☀️"))});</script> 
+
+
+
 </body>
 </html>
-
-<style>
-  :global(body){
-    margin:0;
-    font-family:system-ui,sans-serif;
-    color:#111;
-    background:#fff;
-  }
-
-  :global(main){
-    max-width:1100px;
-    margin:auto;
-    padding:2rem 1rem;
-  }
-</style>
