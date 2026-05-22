@@ -50,6 +50,10 @@ const posts = await getCollection("blog");
         <span>{post.data.title}</span>
       </nav>
 
+
+  <h1>
+        {post.data.title}
+      </h1>
       <!-- Header -->
    <!-- MENJADI INI -->
 <header class="post-header sticky-cta">
@@ -58,9 +62,7 @@ const posts = await getCollection("blog");
 
     <div class="sticky-text">
 
-      <h1>
-        {post.data.title}
-      </h1>
+    
 
       {post.data.description && (
         <p class="excerpt">
@@ -206,7 +208,7 @@ const posts = await getCollection("blog");
 .sticky-cta{
   position:sticky;
   top:0;
-  z-index:60;
+  z-index:999;
 
   background:
     rgba(15,23,42,.82);
