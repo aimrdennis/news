@@ -61,9 +61,6 @@ const posts = await getCollection("blog");
   <div class="sticky-content">
 
     <div class="sticky-text">
-
-    
-
       {post.data.description && (
         <p class="excerpt">
           {post.data.description}
@@ -72,12 +69,14 @@ const posts = await getCollection("blog");
 
     </div>
 
+ <div class="sticky-btn">
     <a
       href="/tools/"
       class="cta-btn"
     >
       Coba Sekarang
     </a>
+</div>
 
   </div>
 
@@ -288,7 +287,13 @@ const posts = await getCollection("blog");
   transform:translateY(-2px);
   opacity:.95;
 }
+.sticky-btn{
+  margin-left:auto;
+  flex-shrink:0;
 
+  display:flex;
+  align-items:center;
+}
 @media(max-width:768px){
 
   .sticky-content{
