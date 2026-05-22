@@ -51,19 +51,50 @@ const posts = await getCollection("blog");
       </nav>
 
       <!-- Title -->
-      <header class="post-header">
+<!-- GANTI BAGIAN INI -->
+<header class="post-header">
 
-        <h1>
-          {post.data.title}
-        </h1>
+  <h1>
+    {post.data.title}
+  </h1>
 
-        {post.data.description && (
-          <p class="excerpt">
-            {post.data.description}
-          </p>
-        )}
+  {post.data.description && (
+    <p class="excerpt">
+      {post.data.description}
+    </p>
+  )}
 
-      </header>
+</header>
+
+<!-- MENJADI INI -->
+<header class="post-header sticky-cta">
+
+  <div class="sticky-content">
+
+    <div class="sticky-text">
+
+      <h1>
+        {post.data.title}
+      </h1>
+
+      {post.data.description && (
+        <p class="excerpt">
+          {post.data.description}
+        </p>
+      )}
+
+    </div>
+
+    <a
+      href="/tools/"
+      class="cta-btn"
+    >
+      Coba Sekarang
+    </a>
+
+  </div>
+
+</header>
 
       <!-- Featured Image -->
       <div class="featured-image">
@@ -334,4 +365,112 @@ const posts = await getCollection("blog");
     }
 
   }
+
+.sticky-cta{
+  position:sticky;
+  top:0;
+  z-index:60;
+
+  background:
+    rgba(15,23,42,.82);
+
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+
+  border-bottom:
+    1px solid rgba(255,255,255,.06);
+
+  margin-bottom:28px;
+}
+
+.sticky-content{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+
+  padding:16px 0;
+}
+
+.sticky-text{
+  flex:1;
+  min-width:0;
+}
+
+.sticky-text h1{
+  font-size:24px;
+  line-height:1.3;
+  margin-bottom:5px;
+
+  display:-webkit-box;
+  -webkit-line-clamp:1;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+.sticky-text .excerpt{
+  margin:0;
+  font-size:14px;
+  color:#94a3b8;
+
+  display:-webkit-box;
+  -webkit-line-clamp:1;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+.cta-btn{
+  flex-shrink:0;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:12px 18px;
+
+  border-radius:14px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #2563eb,
+      #3b82f6
+    );
+
+  color:#fff;
+  text-decoration:none;
+
+  font-size:14px;
+  font-weight:700;
+
+  transition:.25s ease;
+}
+
+.cta-btn:hover{
+  transform:translateY(-2px);
+  opacity:.95;
+}
+
+@media(max-width:768px){
+
+  .sticky-content{
+    gap:14px;
+    align-items:flex-start;
+  }
+
+  .sticky-text h1{
+    font-size:18px;
+  }
+
+  .sticky-text .excerpt{
+    font-size:13px;
+  }
+
+  .cta-btn{
+    padding:10px 14px;
+    font-size:13px;
+    border-radius:12px;
+  }
+
+}
 </style>
