@@ -205,35 +205,30 @@ const posts = await getCollection("blog");
 }
 
 /* Compact sticky CTA */
+
+/* Compact sticky CTA */
 .sticky-cta{
   position:sticky;
   top:0;
   z-index:999;
-
-  background:
-    rgba(15,23,42,.82);
-
+  background:rgba(15,23,42,.82);
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
-
-  border-bottom:
-    1px solid rgba(255,255,255,.06);
-
+  border-bottom:1px solid rgba(255,255,255,.06);
   margin-bottom:48px;
 }
 
 .sticky-content{
   display:flex;
   align-items:center;
-  justify-content:space-between;
   gap:20px;
-
   padding:16px 0;
 }
 
 .sticky-text{
-  flex:1;
+  flex:1 1 auto;
   min-width:0;
+  overflow:hidden;
 }
 
 .sticky-text h1{
@@ -259,26 +254,26 @@ const posts = await getCollection("blog");
 }
 
 .cta-btn{
-  flex-shrink:0;
+  margin-left:auto;
+  flex:0 0 auto;
 
   display:inline-flex;
   align-items:center;
   justify-content:center;
 
-  padding:12px 18px;
+  white-space:nowrap;
 
+  padding:12px 18px;
   border-radius:14px;
 
-  background:
-    linear-gradient(
-      90deg,
-      #2563eb,
-      #3b82f6
-    );
+  background:linear-gradient(
+    90deg,
+    #2563eb,
+    #3b82f6
+  );
 
   color:#fff;
   text-decoration:none;
-
   font-size:14px;
   font-weight:700;
 
@@ -290,11 +285,11 @@ const posts = await getCollection("blog");
   opacity:.95;
 }
 
-@media(max-width:768px){
+@media (max-width:768px){
 
   .sticky-content{
     gap:14px;
-    align-items:flex-start;
+    align-items:center;
   }
 
   .sticky-text h1{
@@ -312,6 +307,10 @@ const posts = await getCollection("blog");
   }
 
 }
+
+
+
+
   .featured-image{
     overflow:hidden;
     border-radius:28px;
