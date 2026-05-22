@@ -3,8 +3,18 @@
 import { SITE } from "../lib/site";
 ---
 
+
+
 <header>
-  <a href="/">{SITE.title}</a>
+   <div class="menu-btn" onclick="toggleMenu()">☰</div>
+   <div class="logo"> <img src="/fav.png" alt="AI Mr Ferdy"> {SITE.title}<</div>
+   <nav id="navMenu">
+      <div class="close-btn" onclick="toggleMenu()">✕ Tutup</div>
+      <a href="/">Home</a> 
+	  <a href="/tools">Tools</a> 
+	  <a href="/blog">Blog</a> 
+	  <a href="/about">Tentang</a> 
+   </nav>
 
   <nav>
     {
@@ -13,7 +23,10 @@ import { SITE } from "../lib/site";
       ))
     }
   </nav>
+   <div class="toggle" onclick="toggleMode()" id="modeIcon">🌙</div>
 </header>
+
+
 
 <style>
 header{
@@ -32,3 +45,6 @@ a{
   color:#111;
 }
 </style>
+
+
+<!-- SCRIPT --> <script type="module">window.toggleMenu=function(){document.getElementById("navMenu").classList.toggle("active")};window.toggleMode=function(){const e=document.documentElement;e.classList.toggle("light-mode");const t=document.getElementById("modeIcon");e.classList.contains("light-mode")?(localStorage.setItem("theme","light"),t&&(t.textContent="☀️")):(localStorage.setItem("theme","dark"),t&&(t.textContent="🌙"))};window.addEventListener("DOMContentLoaded",()=>{const e=localStorage.getItem("theme"),t=document.getElementById("modeIcon");e==="light"&&(document.documentElement.classList.add("light-mode"),t&&(t.textContent="☀️"))});</script> 
