@@ -16,35 +16,17 @@ import { SITE } from "../lib/site";
 	  <a href="/about">Tentang</a> 
    </nav>
 
-  <nav>
+ <!-- <nav>
     {
       SITE.menu.map((item) => (
         <a href={item.url}>{item.name}</a>
       ))
     }
-  </nav>
+  </nav> -->
    <div class="toggle" onclick="toggleMode()" id="modeIcon">🌙</div>
 </header>
 
 
 
 <style>
-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:1rem;
-  border-bottom:1px solid #ddd;
-}
-nav{
-  display:flex;
-  gap:1rem;
-}
-a{
-  text-decoration:none;
-  color:#111;
-}
-</style>
 
-
-<!-- SCRIPT --> <script type="module">window.toggleMenu=function(){document.getElementById("navMenu").classList.toggle("active")};window.toggleMode=function(){const e=document.documentElement;e.classList.toggle("light-mode");const t=document.getElementById("modeIcon");e.classList.contains("light-mode")?(localStorage.setItem("theme","light"),t&&(t.textContent="☀️")):(localStorage.setItem("theme","dark"),t&&(t.textContent="🌙"))};window.addEventListener("DOMContentLoaded",()=>{const e=localStorage.getItem("theme"),t=document.getElementById("modeIcon");e==="light"&&(document.documentElement.classList.add("light-mode"),t&&(t.textContent="☀️"))});</script> 
