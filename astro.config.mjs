@@ -7,7 +7,7 @@ export default defineConfig({
 
   site:
     process.env.SITE_URL ||
-    'https://tools.aimrdennis.com',
+    'https://news.aimrdennis.com',
 
   integrations: [
     sitemap()
